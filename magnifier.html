@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лупа и Телеграм</title>
+    <style>
+        /* Основной стиль страницы */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        /* Лупа */
+        .magnifier {
+            width: 100px;
+            height: 100px;
+            border: 5px solid black;
+            border-radius: 50%;
+            position: relative;
+            animation: spin 3s linear forwards, fadeOut 3s linear forwards;
+        }
+
+        .magnifier::after {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background: black;
+            position: absolute;
+            bottom: -10px;
+            left: 70px;
+            transform: rotate(45deg);
+        }
+
+        /* Значок Telegram */
+        .telegram {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .telegram img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .telegram a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .telegram a:hover {
+            text-decoration: underline;
+        }
+
+        /* Анимации */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Лупа -->
+    <div class="magnifier"></div>
+
+    <!-- Значок Telegram -->
+    <div class="telegram">
+        <img src="https://static.insales-cdn.com/files/1/526/34144782/original/%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D0%B0_1711971983493-1711971987606.png" alt="Telegram">
+        <a href="https://t.me/ohuser" target="_blank">Ты нашел Кая, напиши ему</a>
+    </div>
+
+    <script>
+        // Скрываем лупу и показываем Telegram через 3 секунды
+        setTimeout(() => {
+            document.querySelector('.magnifier').style.display = 'none';
+            document.querySelector('.telegram').style.display = 'flex';
+        }, 3000); // Через 3 секунды
+    </script>
+</body>
+</html>
+        
